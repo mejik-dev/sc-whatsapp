@@ -18,6 +18,10 @@ const useStyles = makeStyles({
     borderRadius: 0,
     marginLeft: 0.05,
   },
+  listWrapper: {
+    maxHeight: "calc(100vh - 62px)",
+    overflow: "auto",
+  },
 })
 
 type ListContactProps = {
@@ -50,6 +54,7 @@ const Title = (props: titleProps): JSX.Element => {
 
 const ListContact = (props: ListContactProps): JSX.Element => {
   const { user, handleOpenChat, handleBack } = props
+  const classes = useStyles()
   const { data, loading } = ContactQuery({
     variables: {
       userId: user?.id,
@@ -61,7 +66,7 @@ const ListContact = (props: ListContactProps): JSX.Element => {
     <>
       <Header child={<Title handleBack={handleBack} />} />
 
-      <Box>
+      <Box className={classes.listWrapper}>
         {loading ? (
           <LoadingProgress />
         ) : (

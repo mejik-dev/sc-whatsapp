@@ -22,6 +22,10 @@ const useStyles = makeStyles({
     bottom: 50,
     right: 30,
   },
+  listWrapper: {
+    maxHeight: "calc(100vh - 62px)",
+    overflow: "auto",
+  },
 })
 
 type ListChatProps = {
@@ -107,7 +111,7 @@ const ListChat = (props: ListChatProps): JSX.Element => {
     <>
       <Header child={<Title />} />
 
-      <Box>
+      <Box className={classes.listWrapper}>
         {loading ? (
           <LoadingProgress />
         ) : data?.conversations.length === 0 ? (
