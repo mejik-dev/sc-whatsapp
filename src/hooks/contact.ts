@@ -5,7 +5,7 @@ const query = {
     query getContacts($userId: String) {
       contacts(where: { userId: $userId, users: { id_not: $userId } }) {
         id
-        users(limit: 500) {
+        users(limit: 500, orderBy: createdAt_DESC) {
           id
           firstName
           avatar
